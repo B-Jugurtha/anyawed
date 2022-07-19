@@ -1,4 +1,0 @@
-if [ -t 1 ]; then
-  echo terminal
-  exec < /dev/tty
-fi
