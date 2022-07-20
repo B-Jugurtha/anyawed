@@ -3,7 +3,7 @@ import AuthContext from '../../../state/auth/AuthContext';
 
 export interface IAuthButton extends React.ComponentPropsWithoutRef<'button'> {}
 
-const AuthButton: React.FC<IAuthButton> = ({ className, ...buttonProps }) => {
+const AuthButton: React.FC<IAuthButton> = ({ ...buttonProps }) => {
   const { authenticated, login, logOut } = useContext(AuthContext);
 
   return (

@@ -1,10 +1,9 @@
-import { createContext, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 interface IAuthContext {
   authenticated: boolean;
   login: () => void;
   logOut: () => void;
-  children?: React.ReactNode;
 }
 
 const defaultValue: IAuthContext = {
@@ -15,7 +14,9 @@ const defaultValue: IAuthContext = {
 
 const AuthContext = createContext<IAuthContext>(defaultValue);
 
-export const AuthProvider: React.FC<IAuthContext> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [authenticated, setAuthenticated] = useState(
     defaultValue.authenticated
   );
