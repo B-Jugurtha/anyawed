@@ -1,11 +1,34 @@
-export interface ISearchResult {
-  sampleTextProp: string;
+import Link from 'next/link';
+
+export interface ISearchResult extends React.ComponentPropsWithoutRef<'div'> {
+  url: string;
+  title: string;
+  text: string;
 }
 
-const SearchResult: React.FC<ISearchResult> = ({ sampleTextProp }) => {
+const SearchResult: React.FC<ISearchResult> = ({
+  url,
+  title,
+  text,
+  className,
+  ...divProps
+}) => {
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
-      {sampleTextProp}
+    <div
+      {...divProps}
+      className={`flex flex-col w-5/6 max-w-screen-md space-y-1 ${className} `}
+    >
+      <Link href={url}>
+        <a
+          className="cursor:pointer hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p>{url}</p>
+          <p className="text-blue-600 text-xl ">{title}</p>
+        </a>
+      </Link>
+      <p>{text}</p>
     </div>
   );
 };
